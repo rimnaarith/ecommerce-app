@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // ====== register DI bindings
 import "reflect-metadata";
-import '@/container';
+import '@/main/container';
 // ================================================
 
 import '@/config/debug'

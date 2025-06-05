@@ -1,8 +1,9 @@
 import { UserRepository } from "@/domain/repositories/UserRepository";
 import { AppError } from "@/shared/errors";
-import { TOKENS } from "@/tokens";
+import { TOKENS } from "@/main/tokens";
 import { StatusCodes } from "http-status-codes";
 import { inject, injectable } from "tsyringe";
+import { User } from "@/domain/entities/User";
 
 @injectable()
 export class RegisterUser {
@@ -15,7 +16,18 @@ export class RegisterUser {
     if (existingUser) {
       throw new AppError('Email already exists', StatusCodes.CONFLICT);
     }
+    const user = User.fromObj({
+      id: '', // TODO: generate id
+      username: null, //TODO: check input is email or username
+      hashedPassword: '', //TODO: hash password
+      name: input.name,
+      email: null, //TODO: check input is email or username
+      profileImgName: null,
+      role: 'USER',
+      updateAt: new Date(),
+      createAt: new Date()
+    })
 
-    return this.userRepository.save(input);
+    return this.userRepository.save(user);
   }
 }

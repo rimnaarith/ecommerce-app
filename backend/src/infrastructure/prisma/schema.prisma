@@ -20,8 +20,8 @@ enum Role {
 }
 
 model Users {
-  userId         String   @id @map("user_id")
-  username       String   @unique
+  id         String   @id @map("user_id")
+  username       String?  @unique
   password       String
   name           String
   email          String?  @unique
