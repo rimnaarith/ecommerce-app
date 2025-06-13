@@ -2,21 +2,15 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-// ====== module-alias config
-if (process.env.NODE_ENV === 'production') { 
-  require('module-alias/register');
-}
-// ================================================
-
 // ====== register DI bindings
 import "reflect-metadata";
-import '@/main/container';
+import '@/main/container.js';
 // ================================================
 
-import '@/config/debug'
+import '@/config/debug.js'
 
 
-import app from './app'
+import app from './app.js'
 
 
 const PORT = process.env.PORT || 3000

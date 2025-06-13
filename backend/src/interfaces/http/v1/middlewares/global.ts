@@ -4,11 +4,11 @@ import cookieParser from 'cookie-parser';
 import favicon from 'serve-favicon';
 import path from 'path';
 
-import { requestTime } from './requestTime'; // example custom middleware
+import { requestTime } from './requestTime.js'; // example custom middleware
 
 export const registerGlobalMiddlewares = (app: Express) => {
   // Serve favicon
-  app.use(favicon(path.join(__dirname, '../../../../../public/favicon.ico')));
+  app.use(favicon(path.resolve('public/favicon.ico')));
 
   app.use(express.json());
   

@@ -1,10 +1,10 @@
 import fs from 'fs/promises';
 import multer, { MulterError } from 'multer';
 import path from 'path';
-import { AppError } from '@/shared/errors';
+import { AppError } from '@/shared/errors/AppError.js';
 import { StatusCodes } from 'http-status-codes';
 import { ErrorRequestHandler } from 'express';
-import { UPLOAD_DIR, uploadLoadOption } from '@/shared/constants/commont.const';
+import { UPLOAD_DIR, uploadLoadOption } from '@/shared/constants/commont.const.js';
 
 const storage = (...subDirs: string[]) => multer.diskStorage({
   destination: async (_req, _file, cb) => {

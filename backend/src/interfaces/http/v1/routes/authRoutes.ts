@@ -1,8 +1,8 @@
 import express from "express";
 import { container } from "tsyringe";
-import { AuthController } from "../controllers/AuthController";
-import { userRegisterSchema } from "@/application/validators/registerSchema";
-import { validateBody } from "../middlewares/validateData";
+import { AuthController } from "../controllers/AuthController.js";
+import { userRegisterSchema } from "@/application/validators/registerSchema.js";
+import { validateBody } from "../middlewares/validateData.js";
 
 userRegisterSchema.parse
 

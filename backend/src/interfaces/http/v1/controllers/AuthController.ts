@@ -2,9 +2,9 @@ import { RequestHandler } from "express";
 import { injectable, inject } from "tsyringe";
 import { z } from "zod";
 
-import { RegisterUser } from "@/application/useCases/RegisterUser";
-import { userRegisterSchema } from "@/application/validators/registerSchema";
-import { sendSuccess } from "@/shared/utils/response";
+import { RegisterUser } from "@/application/useCases/RegisterUser.js";
+import { userRegisterSchema } from "@/application/validators/registerSchema.js";
+import { sendSuccess } from "@/shared/utils/response.js";
 import { StatusCodes } from "http-status-codes";
 
 @injectable()
@@ -18,7 +18,7 @@ export class AuthController {
     const { password, email, name } = req.body;
     try {
       const user = await this.registerUser.execute({
-        email,
+        emailOrUsername: email,
         name,
         password
       });

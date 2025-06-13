@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { UserJwtPayload, JwtObjPayload } from '../types/userTypes';
+import { UserJwtPayload, JwtObjPayload } from '../types/userTypes.js';
 import { Response } from 'express';
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET

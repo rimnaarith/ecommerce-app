@@ -1,8 +1,8 @@
 import express from 'express';
 
-import { errorHandler } from './http/v1/middlewares/errorHandler';
-import { registerGlobalMiddlewares } from './http/v1/middlewares/global';
-import v1Routes from './http/v1/routes'
+import { errorHandler } from './http/v1/middlewares/errorHandler.js';
+import { registerGlobalMiddlewares } from './http/v1/middlewares/global.js';
+import v1Routes from './http/v1/routes/index.js'
 
 const app = express();
 

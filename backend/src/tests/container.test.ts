@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { container } from "tsyringe";
-import { UserRepository } from "@/domain/repositories/UserRepository";
-import { UserPrismaRepository } from "@/infrastructure/repositories/UserPrismaRepository";
-import { TOKENS } from "@/tokens";
+import { UserRepository } from "@/domain/repositories/UserRepository.js";
+import { UserPrismaRepository } from "@/infrastructure/repositories/UserPrismaRepository.js";
+import { TOKENS } from "@/main/tokens.js";
 
 
 container.register<UserRepository>(TOKENS.UserRepository, { useClass: UserPrismaRepository });

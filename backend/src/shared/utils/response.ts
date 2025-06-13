@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { SuccessResponse, ErrorResponse } from '../types/response';
+import { SuccessResponse, ErrorResponse } from '../types/response.js';
 import { StatusCodes } from 'http-status-codes';
 
 function sendSuccess<T>(res: Response, data: T, statusCode: StatusCodes = StatusCodes.OK): Response {

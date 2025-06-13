@@ -1,4 +1,5 @@
 {
   "watch": ["src"],
+  "ext": "*",
   "ignore": ["src/**/types/**"]
 }

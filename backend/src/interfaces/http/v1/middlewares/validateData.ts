@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from "express";
 import { z, ZodError } from "zod";
-import { sendError } from '@/shared/utils/response'
+import { sendError } from '@/shared/utils/response.js'
 import { StatusCodes } from "http-status-codes";
 
 export function validateBody(schema: z.ZodType) {

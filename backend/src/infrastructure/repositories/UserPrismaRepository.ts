@@ -1,15 +1,31 @@
 import { injectable } from 'tsyringe';
 
-import { User } from '@/domain/entities/User';
-import prisma from '../prisma/client';
-import { UserRepository } from "@/domain/repositories/UserRepository";
-import { Prisma, Users } from '@prisma/client';
+import { User } from '@/domain/entities/User.js';
+import prisma from '../prisma/client.js';
+import { UserRepository } from "@/domain/repositories/UserRepository.js";
+import { Users } from '@prisma/client';
 @injectable()
 export class UserPrismaRepository implements UserRepository {
   async findByEmail(email: string): Promise<User | null> {
     const user = await prisma.users.findFirst({
       where: {
         email: email
+      }
+    });
+    return user ? this.toUserEntity(user) : null;
+  }
+
+  async findByEmailOrUsername(emailOrUsername: string): Promise<User | null> {
+    const user = await prisma.users.findFirst({
+      where: {
+        AND: [
+          {
+            OR: [
+              {username: emailOrUsername},
+              {email: emailOrUsername}
+            ]
+          }
+        ]
       }
     });
     return user ? this.toUserEntity(user) : null;

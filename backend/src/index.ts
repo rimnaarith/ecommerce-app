@@ -1,1 +1,1 @@
-import '@/interfaces/server';
+import '@/interfaces/server.js';

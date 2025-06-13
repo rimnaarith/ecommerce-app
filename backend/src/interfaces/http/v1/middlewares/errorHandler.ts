@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from "express";
-import { sendError } from "@/shared/utils/response";
-import { AppError } from "@/shared/errors";
+import { sendError } from "@/shared/utils/response.js";
+import { AppError } from "@/shared/errors/AppError.js";
 import { StatusCodes } from "http-status-codes";
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {

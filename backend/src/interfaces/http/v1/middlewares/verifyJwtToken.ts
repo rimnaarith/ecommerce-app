@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import { verifyToken } from "@/shared/utils/jwt";
+import { verifyToken } from "@/shared/utils/jwt.js";
 import { StatusCodes } from "http-status-codes";
 import { TokenExpiredError } from "jsonwebtoken";
-import { sendError } from "@/shared/utils/response";
+import { sendError } from "@/shared/utils/response.js";
 
 const verifyAccessToken: RequestHandler = (req, res, next) => {
   const authHeader = req.headers['authorization']

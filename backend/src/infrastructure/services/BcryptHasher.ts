@@ -1,18 +1,16 @@
-import { hashPassword, comparePassword } from '../utils/password';
+import { PasswordHasher } from '@/application/interfaces/PasswordHasher.js';
 import { injectable } from 'tsyringe';
-
-export interface PasswordHasher {
-  hash(password: string): Promise<string>;
-  compare(raw: string, hash: string): Promise<boolean>;
-}
+import bcrypt from 'bcryptjs';
 
 @injectable()
 export class BcryptHasher implements PasswordHasher {
-  hash(password: string): Promise<string> {
-    return hashPassword(password);
+  async hash(password: string): Promise<string> {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    return hashedPassword;
   }
 
-  compare(raw: string, hash: string): Promise<boolean> {
-    return comparePassword(raw, hash);
+  async compare(raw: string, hash: string): Promise<boolean> {
+    return await bcrypt.compare(raw, hash)
   }
 }
