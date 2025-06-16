@@ -38,6 +38,6 @@ export class User {
       obj.role,
       obj.updateAt,
       obj.createAt
-    )
+    );
   }
 }

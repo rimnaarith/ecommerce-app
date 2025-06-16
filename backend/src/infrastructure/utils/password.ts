@@ -7,10 +7,10 @@ async function hashPassword(password: string) {
 }
 
 async function comparePassword(s: string, hash: string) {
-  return await bcrypt.compare(s, hash)
+  return await bcrypt.compare(s, hash);
 }
 
 export {
   hashPassword,
   comparePassword
-}
+};

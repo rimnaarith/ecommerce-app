@@ -11,6 +11,6 @@ export class BcryptHasher implements PasswordHasher {
   }
 
   async compare(raw: string, hash: string): Promise<boolean> {
-    return await bcrypt.compare(raw, hash)
+    return await bcrypt.compare(raw, hash);
   }
 }

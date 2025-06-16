@@ -1,11 +1,11 @@
-import type { UserRepository } from "@/domain/repositories/UserRepository.js";
-import { AppError } from "@/shared/errors/AppError.js";
-import { TOKENS } from "@/main/tokens.js";
-import { StatusCodes } from "http-status-codes";
-import { inject, injectable } from "tsyringe";
-import { User } from "@/domain/entities/User.js";
-import type { PasswordHasher } from "../interfaces/PasswordHasher.js";
-import type { IDGenerator } from "../interfaces/IDGenerator.js";
+import type { UserRepository } from '@/domain/repositories/UserRepository.js';
+import { AppError } from '@/shared/errors/AppError.js';
+import { TOKENS } from '@/main/tokens.js';
+import { StatusCodes } from 'http-status-codes';
+import { inject, injectable } from 'tsyringe';
+import { User } from '@/domain/entities/User.js';
+import type { PasswordHasher } from '../interfaces/PasswordHasher.js';
+import type { IDGenerator } from '../interfaces/IDGenerator.js';
 
 @injectable()
 export class RegisterUser {
@@ -31,7 +31,7 @@ export class RegisterUser {
       role: 'USER',
       updateAt: new Date(),
       createAt: new Date()
-    })
+    });
 
     return this.userRepository.save(user);
   }

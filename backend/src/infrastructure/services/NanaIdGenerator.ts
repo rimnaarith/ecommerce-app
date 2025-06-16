@@ -1,5 +1,5 @@
-import { IDGenerator } from "@/application/interfaces/IDGenerator.js";
-import { injectable } from "tsyringe";
+import { IDGenerator } from '@/application/interfaces/IDGenerator.js';
+import { injectable } from 'tsyringe';
 
 @injectable()
 export class NanoIDGenerator implements IDGenerator {

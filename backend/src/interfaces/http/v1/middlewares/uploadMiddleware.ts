@@ -13,6 +13,7 @@ const storage = (...subDirs: string[]) => multer.diskStorage({
       await fs.mkdir(uploadDir, { recursive: true });
       cb(null, uploadDir);
     } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       cb(err);
     }
@@ -41,13 +42,13 @@ const upload = (
 type UploadError = (msg?: {[x in multer.ErrorCode]?: string}) => ErrorRequestHandler
 const uploadError: UploadError = (msg) => (err, _req, _res, next) => {
   if (err instanceof MulterError) {
-   next(new AppError(msg?.[err.code] ?? err.code, StatusCodes.BAD_REQUEST))
+   next(new AppError(msg?.[err.code] ?? err.code, StatusCodes.BAD_REQUEST));
   } else if (err instanceof AppError) {
-    next(err)
+    next(err);
   } else {
-    next(new AppError(!err.message || process.env.NODE_ENV === 'production'? 'Something went wrong.' : err.message))
+    next(new AppError(!err.message || process.env.NODE_ENV === 'production'? 'Something went wrong.' : err.message));
   }
-}
+};
 
 /* ============================================== 
  *  Avatar upload
@@ -64,11 +65,11 @@ const uploadAvatar = upload({
     fileSize: uploadLoadOption.uploadAvatar.maxFileSize,
   }, 
   subDirs: uploadLoadOption.uploadAvatar.subDir
-})
+});
 const uploadAvatarError = uploadError({
   LIMIT_FILE_SIZE: uploadLoadOption.uploadAvatar.errorMsg.limitFileSize,
   LIMIT_UNEXPECTED_FILE: 'UNEXPECTED_FILE'
-})
+});
 /* ============================================== 
  *  Avatar upload
  * =============================================== */
@@ -77,4 +78,4 @@ const uploadAvatarError = uploadError({
 export {
   uploadAvatar,
   uploadAvatarError
-}
+};

@@ -3,7 +3,7 @@ import { SuccessResponse, ErrorResponse } from '../types/response.js';
 import { StatusCodes } from 'http-status-codes';
 
 function sendSuccess<T>(res: Response, data: T, statusCode: StatusCodes = StatusCodes.OK): Response {
-  const incomingTime = Number(res.get('incomingTime'))
+  const incomingTime = Number(res.get('incomingTime'));
   const response: SuccessResponse<T> = {
     status: 'success',
     processedTime: isNaN(incomingTime) ? 0 : Date.now() - incomingTime,
@@ -12,7 +12,7 @@ function sendSuccess<T>(res: Response, data: T, statusCode: StatusCodes = Status
   return res.status(statusCode).json(response);
 }
 
-function sendError(res: Response, message: string, statusCode: StatusCodes = StatusCodes.INTERNAL_SERVER_ERROR,stack?: string, code?: string, details?: any): Response {
+function sendError(res: Response, message: string, statusCode: StatusCodes = StatusCodes.INTERNAL_SERVER_ERROR,stack?: string, code?: string, details?: unknown): Response {
   const response: ErrorResponse = {
     status: 'failure',
     message,
@@ -26,4 +26,4 @@ function sendError(res: Response, message: string, statusCode: StatusCodes = Sta
 export {
   sendSuccess,
   sendError
-}
+};

@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe';
 
 import { User } from '@/domain/entities/User.js';
 import prisma from '../prisma/client.js';
-import { UserRepository } from "@/domain/repositories/UserRepository.js";
+import { UserRepository } from '@/domain/repositories/UserRepository.js';
 import { Users } from '@prisma/client';
 @injectable()
 export class UserPrismaRepository implements UserRepository {
@@ -40,7 +40,7 @@ export class UserPrismaRepository implements UserRepository {
         username: user.username,
         email: user.email
       }
-    })
+    });
     return this.toUserEntity(saved);
   }
   private toUserEntity(prismaUser: Users) {
@@ -56,6 +56,6 @@ export class UserPrismaRepository implements UserRepository {
         updateAt: prismaUser.updateAt,
         createAt: prismaUser.createAt
       }
-    )
+    );
   }
 }

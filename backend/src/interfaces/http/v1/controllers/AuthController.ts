@@ -1,11 +1,11 @@
-import { RequestHandler } from "express";
-import { injectable, inject } from "tsyringe";
-import { z } from "zod";
+import { RequestHandler } from 'express';
+import { injectable, inject } from 'tsyringe';
+import { z } from 'zod';
 
-import { RegisterUser } from "@/application/useCases/RegisterUser.js";
-import { userRegisterSchema } from "@/application/validators/registerSchema.js";
-import { sendSuccess } from "@/shared/utils/response.js";
-import { StatusCodes } from "http-status-codes";
+import { RegisterUser } from '@/application/useCases/RegisterUser.js';
+import { userRegisterSchema } from '@/application/validators/registerSchema.js';
+import { sendSuccess } from '@/shared/utils/response.js';
+import { StatusCodes } from 'http-status-codes';
 
 @injectable()
 export class AuthController {
@@ -14,7 +14,7 @@ export class AuthController {
   ){}
 
 
-  register: RequestHandler<{}, {}, z.infer<typeof userRegisterSchema>> = async (req, res, next) => {
+  register: RequestHandler<object, object, z.infer<typeof userRegisterSchema>> = async (req, res, next) => {
     const { password, email, name } = req.body;
     try {
       const user = await this.registerUser.execute({
@@ -26,5 +26,5 @@ export class AuthController {
     } catch (err) {
       next(err);
     }
-  }
+  };
 }

@@ -1,14 +1,14 @@
 export interface SuccessResponse<T> {
-  status: "success";
+  status: 'success';
   processedTime: number
   data: T;
 }
 
 export interface ErrorResponse {
-  status: "failure";
+  status: 'failure';
   message: string;
   stack?: string;
-  details?: any;
+  details?: unknown;
   code?: string;
 }
 

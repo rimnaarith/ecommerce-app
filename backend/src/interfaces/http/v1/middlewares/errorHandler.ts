@@ -1,16 +1,16 @@
-import { ErrorRequestHandler } from "express";
-import { sendError } from "@/shared/utils/response.js";
-import { AppError } from "@/shared/errors/AppError.js";
-import { StatusCodes } from "http-status-codes";
+import { ErrorRequestHandler } from 'express';
+import { sendError } from '@/shared/utils/response.js';
+import { AppError } from '@/shared/errors/AppError.js';
+import { StatusCodes } from 'http-status-codes';
 
-const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+const errorHandler: ErrorRequestHandler = (err, _req, res) => {
   if (err instanceof AppError) {
-    sendError(res, err.message, err.statusCode, err.stack, err.code)
+    sendError(res, err.message, err.statusCode, err.stack, err.code);
   } else {
-    sendError(res, 'Something went wrong.', StatusCodes.INTERNAL_SERVER_ERROR, err.stack)
+    sendError(res, 'Something went wrong.', StatusCodes.INTERNAL_SERVER_ERROR, err.stack);
   }
-}
+};
 
 export {
   errorHandler
-}
+};
