@@ -11,7 +11,8 @@ export default defineConfig([
   {
 	  rules: {
 			quotes: ['error', 'single', { allowTemplateLiterals: true }],
-			semi: ['error', 'always']
+			semi: ['error', 'always'],
+      '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }]
 		},
 	}
 ]);

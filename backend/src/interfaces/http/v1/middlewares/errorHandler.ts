@@ -3,7 +3,7 @@ import { sendError } from '@/shared/utils/response.js';
 import { AppError } from '@/shared/errors/AppError.js';
 import { StatusCodes } from 'http-status-codes';
 
-const errorHandler: ErrorRequestHandler = (err, _req, res) => {
+const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   if (err instanceof AppError) {
     sendError(res, err.message, err.statusCode, err.stack, err.code);
   } else {
