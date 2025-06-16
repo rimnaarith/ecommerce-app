@@ -22,7 +22,7 @@ export class RegisterUser {
       throw new AppError((isEmail ? 'Email' : 'Username') + ' already exists', StatusCodes.CONFLICT);
     }
     const user = User.fromObj({
-      id: await this.idGenerator.gen(),
+      id: this.idGenerator.gen(),
       username: !isEmail ? input.emailOrUsername : null,
       hashedPassword: await this.passworHasher.hash(input.password),
       name: input.name,
